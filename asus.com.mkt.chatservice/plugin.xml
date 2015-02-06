@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="asus.com.mkt.chatservice"
+        version="0.0.1">
+    <name>Device Accounts</name>
+    <description>MyAsus Chat Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,chat</keywords>
+
+    <js-module src="www/ChatServices.js" name="ChatServices">
+        <clobbers target="plugins.ChatServices" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ChatServices" >
+                <param name="android-package" value="asus.com.mkt.chatservice.ChatServices"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/ChatServices.java" target-dir="src/asus/com/mkt/chatservice" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET"/>
+        </config-file>
+    </platform>
+</plugin>
